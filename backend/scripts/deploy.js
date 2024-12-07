@@ -1,9 +1,9 @@
 const main = async () => {
   const contractFactory = await ethers.getContractFactory("PriceConsumerV3");
   const contract = await contractFactory.deploy();
-  await contract.deployed();
+  await contract.waitForDeployment();
 
-  console.log("Contract deployed to: ", await contract.getAddress);
+  console.log("Contract deployed to: ", await contract.getAddress());
 };
 
 const runMain = async () => {

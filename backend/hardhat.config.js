@@ -1,16 +1,22 @@
-require("@nomiclabs/hardhat-waffle");
-// In the root directory: npm install --save-dev @nomicfoundation/hardhat-ethers ethers
 require("@nomicfoundation/hardhat-ethers");
+require("@nomicfoundation/hardhat-chai-matchers");
 require("dotenv").config();
 
 module.exports = {
   defaultNetwork: "sepolia",
-  solidity: "0.8.4",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.7",
+      },
+      {
+        version: "0.8.0",
+      },
+    ],
+  },
   networks: {
     sepolia: {
-      url:
-        "https://eth-sepolia.g.alchemy.com/v2/" +
-        process.env.ALCHEMY_SEPOLIA_URL,
+      url: process.env.ALCHEMY_SEPOLIA_URL,
       accounts: [process.env.METAMASK_ACCOUNT_PRIVATE_KEY],
     },
   },
