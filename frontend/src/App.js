@@ -9,7 +9,7 @@ function App() {
 
   const { pairs } = item;
 
-  const contractAddress = "0x060D250e67E51eBC1e8E9232734e50f7f2c2b26A";
+  const contractAddress = "0xC07325fb619d68d447E5169Bc26078fA76523756";
   const ABI = [
     {
       inputs: [],
@@ -25,7 +25,7 @@ function App() {
     },
     {
       inputs: [],
-      name: "getBtcEthLatestAnswer",
+      name: "getEthUsdLatestAnswer",
       outputs: [{ internalType: "int256", name: "", type: "int256" }],
       stateMutability: "view",
       type: "function",
@@ -39,8 +39,8 @@ function App() {
     let contractPrice;
     if (pairs === "BTC/USD") {
       contractPrice = await contract.getBtcUsdLatestAnswer();
-    } else if (pairs === "BTC/ETH") {
-      contractPrice = await contract.getBtcEthLatestAnswer();
+    } else if (pairs === "ETH/USD") {
+      contractPrice = await contract.getEthUsdLatestAnswer();
     } else {
       return; // If no pair selected, do nothing
     }
@@ -89,12 +89,12 @@ function App() {
                     checked={pairs === "BTC/USD"}
                   />
                   <Form.Check
-                    value="BTC/ETH"
+                    value="ETH/USD"
                     type="radio"
                     aria-label="radio 2"
-                    label="BTC/ETH"
+                    label="ETH/USD"
                     onChange={handleChange}
-                    checked={pairs === "BTC/ETH"}
+                    checked={pairs === "ETH/USD"}
                   />
                 </Form.Group>
               </form>
